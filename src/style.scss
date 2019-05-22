@@ -1,1 +1,198 @@
 @import './variables.scss';
+@import "./reset.css";
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap");
+
+@mixin flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+body {
+  font-family: 'PT Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: $primaryColor;
+}
+
+.center {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.content {
+  flex: 1;
+}
+
+.link {
+  display: block;
+  width: max-content;
+  padding: 13px 23px;
+  margin: 8px auto;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 100px;
+  outline: none;
+  cursor: pointer;
+
+  &--primary {
+    color: #ffffff;
+    background: $primaryColor;
+  }
+
+  &--disabled {
+    pointer-events: none;
+
+  }
+}
+
+.wrapper {
+  @include flex;
+  flex-direction: column;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.nav {
+  @include flex;
+  align-items: center;
+  padding-top: 30px;
+
+  &__links {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+  }
+
+  &__link {
+    display: block;
+    padding: 20px 25px;
+    color: $primaryColor;
+    font-size: 18px;
+
+    &--active {
+
+    }
+  }
+}
+
+.header {
+  font-size: 40px;
+  font-weight: 700;
+  padding-bottom: 16px;
+
+  &--primary {
+    color: $primaryColor;
+  }
+
+  &--secondary {
+    color: $secondarySectionBg;
+  }
+
+  &--small {
+    font-size: 20px;
+  }
+
+  &--big {
+    font-size: 60px;
+  }
+}
+
+.section {
+  padding: {
+    top: 70px;
+    bottom: 60px;
+  }
+
+  &--primary {
+    background: $primarySectionBg;
+  }
+
+  &__header {
+    font-size: 3em;
+    font-weight: 700;
+
+    &--primary {
+      color: $primarySectionHeaderColor;
+    }
+
+    &--secondary {
+      color: $secondarySectionHeaderColor;
+    }
+
+    &--important {
+      color: $primaryColor;
+    }
+  }
+
+  &__text {
+    font-size: 20px;
+    line-height: 1.5;
+
+    &--primary {
+      color: $primarySectionColor;
+    }
+
+    &--secondary {
+      color: $secondarySectionColor;
+    }
+  }
+}
+
+.main__img {
+  width: 300px;
+  height: auto;
+  opacity: .7;
+}
+
+.card {
+  background: #ffffff;
+  margin: 16px;
+  padding: 24px;
+  border-radius: 8px;
+  height: 100%;
+  text-align: center;
+  max-width: 450px;
+
+  &__header {
+    @include flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__img {
+    width: 40px;
+    height: auto;
+  }
+
+  &__title {
+    color: $primaryColor;
+    font-size: 40px;
+    font-weight: 700;
+    margin: 20px;
+  }
+
+  &__text {
+    color: $secondarySectionColor;
+    font-size: 18px;
+  }
+
+  &__btn {
+    margin: 20px aguto 0 auto;
+    width: 50%;
+  }
+}
+
+.footer {
+  background: $secondarySectionBg;
+}

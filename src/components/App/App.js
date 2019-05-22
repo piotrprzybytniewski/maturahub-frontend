@@ -1,32 +1,27 @@
-import React, { Component } from 'react'
-import Table from "../../Table";
+import React, {Component} from 'react'
+import {Navigation} from "../Navigation/Navigation";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {Homepage} from "../../Layout/Homepage";
+import {Subject} from "../../Layout/Subject";
+import {NotFound} from "../../Layout/NotFound";
+import {Footer} from "../Footer/Footer";
 
 class App extends Component {
     render() {
-        const characters = [
-            {
-                name: 'Charlie',
-                job: 'Janitor',
-            },
-            {
-                name: 'Mac',
-                job: 'Bouncer',
-            },
-            {
-                name: 'Dee',
-                job: 'Aspring actress',
-            },
-            {
-                name: 'Dennis',
-                job: 'Bartender',
-            },
-        ];
-
-
         return (
-            <div className="container">
-                <Table characterData={characters} />
-            </div>
+            <Router>
+                <div className="wrapper">
+                    <header>
+                        <Navigation/>
+                    </header>
+                    <Switch>
+                        <Route exact path="/" component={Homepage}/>
+                        <Route exact path="/przedmioty" component={Subject}/>
+                        <Route component={NotFound}/>
+                    </Switch>
+                    <Footer/>
+                </div>
+            </Router>
         )
     }
 }
