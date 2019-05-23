@@ -6,6 +6,9 @@ import {CardsRow} from "../components/Card/CardsRow";
 import {Card} from "../components/Card/Card";
 import {CardText} from "../components/Card/CardText";
 import {CardBtn} from "../components/Card/CardBtn";
+import {CardImg} from "../components/Card/CardImg";
+import {CardHeader} from "../components/Card/CardHeader";
+import {Link} from "../components/Link/Link";
 
 export const Homepage = () => (
     <div className="content">
@@ -31,7 +34,9 @@ export const Homepage = () => (
             </SectionText>
             <CardsRow>
                 <Card>
-
+                    <CardImg src="/images/przedmioty/matematyka.svg" alt="matematyka matura" />
+                    <CardHeader title="MATEMATYKA">
+                    </CardHeader>
                     <CardText>
                         Wszystkie zadania zamknięte z arkuszy maturalnych CKE (2005 - 2019)
                         <br/>
@@ -39,8 +44,43 @@ export const Homepage = () => (
                     </CardText>
                     <CardBtn href="matura/matematyka" type="primary"/>
                 </Card>
-            </CardsRow>
 
+                <Card>
+                    <CardImg src="/images/przedmioty/polski.svg" alt="polski matura" />
+                    <CardHeader title="POLSKI">
+                    </CardHeader>
+                    <CardText>
+                        Wszystkie zadania zamknięte z arkuszy maturalnych CKE (2005 - 2019)
+                        <br/>
+                        200 zadań przygotowujących do matury prosto z arkuszy maturalnych!
+                    </CardText>
+                    <Link href="/" type="disabled card__btn">WKRÓTCE</Link>
+                </Card>
+
+                <Card>
+                    <CardImg src="/images/przedmioty/angielski.svg" alt="angielski matura" />
+                    <CardHeader title="JĘZYK ANGIELSKI">
+                    </CardHeader>
+                    <CardText>
+                        Wszystkie zadania zamknięte z arkuszy maturalnych CKE (2005 - 2019)
+                        <br/>
+                        170 zadań przygotowujących do matury prosto z arkuszy maturalnych!
+                    </CardText>
+                    <Link href="/" type="disabled card__btn">WKRÓTCE</Link>
+                </Card>
+
+                <Card>
+                    <CardImg src="/images/przedmioty/angielski.svg" alt="angielski matura" />
+                    <CardHeader title="JĘZYK ANGIELSKI poziom rozszerzony">
+                    </CardHeader>
+                    <CardText>
+                        Wszystkie zadania zamknięte z arkuszy maturalnych CKE (2005 - 2019)
+                        <br/>
+                        170 zadań przygotowujących do matury prosto z arkuszy maturalnych!
+                    </CardText>
+                    <Link href="/" type="disabled card__btn">WKRÓTCE</Link>
+                </Card>
+            </CardsRow>
         </Section>
     </div>
 );
