@@ -16,6 +16,10 @@ a {
   color: $primaryColor;
 }
 
+::placeholder {
+  opacity: .5;
+}
+
 .center {
   text-align: center;
   margin: 0 auto;
@@ -34,9 +38,9 @@ a {
 .link {
   display: block;
   width: max-content;
-  padding: 13px 23px;
+  padding: 13px 33px;
   margin: 8px auto;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
   border: none;
@@ -53,6 +57,13 @@ a {
     pointer-events: none;
     background: #cccccc;
     color: #888;
+  }
+
+  &--long {
+    padding: {
+      left: 55px;
+      right: 55px;
+    }
   }
 }
 
@@ -202,4 +213,57 @@ a {
 
 .footer {
   background: $secondarySectionBg;
+}
+
+.form {
+  @include flex;
+  flex-direction: column;
+  background: #f5f7ff;
+  padding: 53px;
+  border-radius: 15px;
+
+
+  &__field {
+    @include flex;
+    flex-direction: column;
+    margin: 10px auto;
+    width: 70%;
+  }
+
+  &__error {
+    color: $primaryColor;
+    margin: 3px auto;
+  }
+
+  &__label {
+    color: $secondarySectionColor;
+    margin: 0 0 8px 8px;
+    place-self: flex-start;
+  }
+
+  &--medium {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+.input {
+  background: #ffffff;
+  color: #4e4e4ee3;
+  padding: 12px 23px;
+  font-size: 15px;
+  font-family: sofia-pro,sans-serif;
+  transition: all .08s linear;
+  border: 1px solid transparent;
+  border-radius: 100px;
+  box-shadow: 0 11px 30px rgba(52,55,68,.06);
+
+  &:focus,
+  &:focus-within {
+    -webkit-transition: all .08s linear;
+    transition: all .08s linear;
+    border: 1px solid #6067f1;
+    color: #6067f1;
+    outline: none;
+  }
 }
