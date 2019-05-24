@@ -18,6 +18,11 @@ export const Navigation = () => (
                     MATURA MATEMATYKA
                 </Link>
             </li>
+            <li>
+                <Link href="/pytanie" type="secondary">
+                    DODAJ PYTANIE
+                </Link>
+            </li>
         </ul>
     </nav>
 );
