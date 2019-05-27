@@ -3,5 +3,6 @@
 
 ### Built with
 * ReactJS,
-* SASS
-
+* SASS,
+* Formik to build forms in React without tears :],
+* axios for API calls,

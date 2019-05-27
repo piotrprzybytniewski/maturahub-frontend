@@ -1,15 +1,16 @@
 import React from 'react';
 import {SectionHeader} from "../components/Section/SectionHeader";
 import {Section} from "../components/Section/Section";
-import {Form, Field, ErrorMessage, Formik} from 'formik';
+import {Form, Formik} from 'formik';
 import * as Yup from 'yup';
 import {Button} from "../components/Button/Button";
 import {SectionText} from "../components/Section/SectionText";
 import {FormField} from "../components/Form/FormField";
+import API from "../utils/API";
+import {Content} from "./Content";
 
 export const AddQuestion = () => (
-    <div className="content">
-        {/*<div className="main section center">*/}
+    <Content>
         <Section type="secondary">
             <Formik
                 initialValues={{
@@ -27,8 +28,15 @@ export const AddQuestion = () => (
                         correct: '',
                     },
                 }}
-                onSubmit={values => {
-                    console.log(values);
+                onSubmit={questionValues => {
+                    let questionData = {data: [questionValues]};
+                    console.log(questionData);
+
+                    API.post('/questions', questionData).then(response => {
+                        console.log(response.data);
+                    }).catch(error => {
+                        console.log(error)
+                    });
                 }}
                 validationSchema={AddQuestionValidation}
             >
@@ -69,7 +77,7 @@ export const AddQuestion = () => (
                 </Form>
             </Formik>
         </Section>
-    </div>
+    </Content>
 );
 
 const AddQuestionValidation = Yup.object().shape({

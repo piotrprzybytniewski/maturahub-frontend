@@ -14,7 +14,7 @@ export const Navigation = () => (
                 </Link>
             </li>
             <li>
-                <Link href="/matura/matematyka" type="secondary">
+                <Link href="/powtorzenie/matematyka" type="secondary">
                     MATURA MATEMATYKA
                 </Link>
             </li>

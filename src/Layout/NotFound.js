@@ -1,8 +1,9 @@
 import React from 'react';
 import {Link} from "../components/Link/Link";
+import {Content} from "./Content";
 
 export const NotFound = () => (
-    <div className="content">
+    <Content>
         <div className="section section--secondary center">
             <h2 className="header header--primary header--big">
                 Oops!
@@ -15,5 +16,5 @@ export const NotFound = () => (
             </p>
             <Link href="/" type="primary">IDŹ DO STRONY GŁÓWNEJ</Link>
         </div>
-    </div>
+    </Content>
 );

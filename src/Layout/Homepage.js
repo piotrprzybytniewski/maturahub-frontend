@@ -9,10 +9,10 @@ import {CardBtn} from "../components/Card/CardBtn";
 import {CardImg} from "../components/Card/CardImg";
 import {CardHeader} from "../components/Card/CardHeader";
 import {Link} from "../components/Link/Link";
+import {Content} from "./Content";
 
 export const Homepage = () => (
-    <div className="content">
-        {/*<div className="main section center">*/}
+    <Content>
         <Section type="secondary">
             <img src="/images/orzel.svg" alt="orzeł" className="main__img"/>
             <SectionHeader type="important">ZDAJ MATURĘ BEZ STRESU</SectionHeader>
@@ -34,7 +34,7 @@ export const Homepage = () => (
             </SectionText>
             <CardsRow>
                 <Card>
-                    <CardImg src="/images/przedmioty/matematyka.svg" alt="matematyka matura" />
+                    <CardImg src="/images/przedmioty/matematyka.svg" alt="matematyka matura"/>
                     <CardHeader title="MATEMATYKA">
                     </CardHeader>
                     <CardText>
@@ -42,11 +42,11 @@ export const Homepage = () => (
                         <br/>
                         Łącznie 250 zadań przygotowujących do matury prosto z arkuszy maturalnych!
                     </CardText>
-                    <CardBtn href="matura/matematyka" type="primary"/>
+                    <CardBtn href="powtorzenie/matematyka" type="primary"/>
                 </Card>
 
                 <Card>
-                    <CardImg src="/images/przedmioty/polski.svg" alt="polski matura" />
+                    <CardImg src="/images/przedmioty/polski.svg" alt="polski matura"/>
                     <CardHeader title="POLSKI">
                     </CardHeader>
                     <CardText>
@@ -58,7 +58,7 @@ export const Homepage = () => (
                 </Card>
 
                 <Card>
-                    <CardImg src="/images/przedmioty/angielski.svg" alt="angielski matura" />
+                    <CardImg src="/images/przedmioty/angielski.svg" alt="angielski matura"/>
                     <CardHeader title="JĘZYK ANGIELSKI">
                     </CardHeader>
                     <CardText>
@@ -70,7 +70,7 @@ export const Homepage = () => (
                 </Card>
 
                 <Card>
-                    <CardImg src="/images/przedmioty/angielski.svg" alt="angielski matura" />
+                    <CardImg src="/images/przedmioty/angielski.svg" alt="angielski matura"/>
                     <CardHeader title="JĘZYK ANGIELSKI poziom rozszerzony">
                     </CardHeader>
                     <CardText>
@@ -82,5 +82,5 @@ export const Homepage = () => (
                 </Card>
             </CardsRow>
         </Section>
-    </div>
+    </Content>
 );
