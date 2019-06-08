@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Content} from "../Content";
 import {Section} from "../../components/Section/Section";
 import {SectionHeader} from "../../components/Section/SectionHeader";
@@ -9,119 +9,89 @@ import {FormField} from "../../components/Form/FormField";
 import {Button} from "../../components/Button/Button";
 import * as Yup from 'yup';
 import {Question} from "../../components/Quiz/Question";
+import {QuestionsList} from "../../components/Quiz/QuestionsList";
 
-const questions = API.get('/questions/2')
-    .then(function (response) {
-        console.log(response);
-    })
-    .catch(function (error) {
-        console.log(error);
-    })
-    .then(function () {
-        // always executed
+
+export const StandardQuiz = () => {
+    const [questions, setQuestions] = useState([]);
+    const [correctAnswers, setCorrectAnswers] = useState([]);
+
+
+    useEffect(() => {
+        API.get('/questions/3')
+            .then(function (response) {
+                const responseQuestions = response.data['data'];
+                setQuestions(responseQuestions);
+                setCorrectAnswers({correct: getCorrectValues(responseQuestions)});
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }, []);
+
+
+    const initializeValues = () => {
+        const initialValues = {};
+        questions.forEach((question, index) => {
+            initialValues[index] = "";
+        });
+        return initialValues;
+    };
+
+    const getCorrectValues = (questions) => {
+        const initialValues = [];
+        questions.forEach((question, index) => {
+            initialValues[index] = question.answer.correct;
+        });
+        return initialValues;
+    };
+
+
+    const getIncorrectAnswers = (questions) => {
+        let differentIndexes = [];
+        questions.forEach((element, index) => {
+            if (element !== correctAnswers.correct[index]) {
+                differentIndexes.push(index);
+            }
+        });
+        return differentIndexes;
+    };
+
+    const handleSubmit = (values) => {
+        console.log('correct answ', correctAnswers.correct);
+        console.log('submitted', values.question);
+        console.log('incorrect', getIncorrectAnswers(values.question));
+    };
+
+    const questionsValidation = Yup.object().shape({
+            question: Yup.array().required('Must have friends')
     });
-export const StandardQuiz = () => (
-    <Content>
-        <Section type="secondary">
-            <div className="question">
+
+    return (
+        <Content>
+            <Section type="secondary">
                 <Formik
-                    initialValues={{
-                        question: '',
-                        level: '',
-                    }}
+                    initialValues={initializeValues}
+                    validationSchema={questionsValidation}
                     onSubmit={values => {
-                        // let questionData = {data: [values]};
-                        console.log(values);
-
-                        // API.post('/questions', questionData).then(response => {
-                        //     console.log(response.data);
-                        // }).catch(error => {
-                        //     console.log(error)
-                        // });
-
+                        handleSubmit(values)
                     }}
-                    // validationSchema={AddQuestionValidation}
                 >
+
                     <Form className="form form--medium">
                         <SectionHeader type="important">POWTÓRZENIE DO MATURY Z MATEMATYKI</SectionHeader>
                         <SectionText type="secondary">
                             Test 20 losowych pytań z arkuszy maturalnych z poprzednich lat!
                         </SectionText>
-                        <Question>
-                            <label>
-                                <Field type="radio" name="question[0]" placeholder="subj1" value="a"/>
-                                A. TEST NUM A
-                            </label>
-                            <label>
-                                <Field type="radio" name="question[0]" placeholder="subj2" value="b"/>
-                                B. TEST NUM BBI
-                            </label>
-                        </Question>
+                        <QuestionsList questions={questions}/>
 
-                        <FormField type="text" name="level"
-                                   placeholder="podstawowy / rozszerzony " displayName="Poziom"/>
-                        <Button type="submit" btnClass="primary link--long">SUBMIT</Button>
+                        <input type="submit" className="link link--primary link--long"
+                               value="SPRAWDŹ WYNIK"/>
                     </Form>
                 </Formik>
-            </div>
-        </Section>
-    </Content>
-);
 
 
-const AddQuestionValidation = Yup.object().shape({
-    subject: Yup
-        .string()
-        .min(1, 'Wartość za krótka')
-        .max(255, 'Wartość za długa')
-        .required('To pole jest wymagane'),
-    level: Yup
-        .string()
-        .min(1, 'Wartość za krótka')
-        .max(100, 'Wartość za długa')
-        .required('To pole jest wymagane'),
-    section: Yup
-        .string()
-        .min(1, 'Wartość za krótka')
-        .max(500, 'Wartość za długa')
-        .required('To pole jest wymagane'),
-    source: Yup
-        .string()
-        .min(1, 'Wartość za krótka')
-        .max(255, 'Wartość za długa')
-        .required('To pole jest wymagane'),
-    question: Yup
-        .string()
-        .min(1, 'Wartość za krótka')
-        .max(1000, 'Wartość za długa')
-        .required('To pole jest wymagane'),
-    year: Yup
-        .number()
-        .integer()
-        .required('To pole jest wymagane'),
-    answer: Yup.object().shape({
-        a: Yup.string()
-            .min(1, 'Wartość za krótka')
-            .max(1000, 'Wartość za długa')
-            .required('To pole jest wymagane'),
-        b: Yup.string()
-            .min(1, 'Wartość za krótka')
-            .max(1000, 'Wartość za długa')
-            .required('To pole jest wymagane'),
-        c: Yup.string()
-            .min(1, 'Wartość za krótka')
-            .max(1000, 'Wartość za długa')
-            .required('To pole jest wymagane'),
-        d: Yup.string()
-            .min(1, 'Wartość za krótka')
-            .max(1000, 'Wartość za długa')
-            .required('To pole jest wymagane'),
-        correct: Yup.string()
-            .min(1, 'Wartość za krótka')
-            .max(1000, 'Wartość za długa')
-            .required('To pole jest wymagane'),
-    })
-
-});
-
-
+            </Section>
+        </Content>
+    )
+};
