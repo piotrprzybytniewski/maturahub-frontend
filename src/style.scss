@@ -129,6 +129,13 @@ a {
     background: $primarySectionBg;
   }
 
+  &--rounded {
+    border-radius: 15px;
+    width: max-content;
+    margin: 0 auto;
+    padding: 30px 80px
+  }
+
   &__header {
     font-size: 3em;
     font-weight: 700;
@@ -156,6 +163,10 @@ a {
 
     &--secondary {
       color: $secondarySectionColor;
+    }
+
+    &--white {
+      color: #fff;
     }
   }
 }
@@ -289,6 +300,27 @@ a {
   }
 
   &__answer {
+
+    &--answered:after {
+      opacity: 0;
+    }
+
+    &--correct {
+      background: $correctAnswer !important;
+
+      &:before {
+        background: $correctAnswer !important;
+      }
+    }
+
+    &--wrong {
+      background: $wrongAnswer !important;
+
+      &:before {
+        background: $wrongAnswer !important;
+      }
+    }
+
   }
 }
 
