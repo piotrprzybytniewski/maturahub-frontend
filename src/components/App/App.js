@@ -25,6 +25,7 @@ class App extends Component {
                     </Switch>
                     <Footer/>
                 </div>
+
                 </ScrollToTop>
             </Router>
         )
