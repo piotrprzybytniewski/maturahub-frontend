@@ -6,7 +6,6 @@ import {SectionText} from "../../components/Section/SectionText";
 import {Form, Formik} from "formik";
 import API from "../../utils/API";
 import {QuestionsList} from "../../components/Quiz/QuestionsList";
-import * as Yup from "yup";
 import {Timer} from "../../components/Timer/Timer";
 import {Result} from "../../components/Quiz/Result/Result";
 
@@ -88,13 +87,8 @@ export const StandardQuiz = () => {
         setResult({incorrect: incorrectFormAnswers.length, total: correctFormAnswers.length});
         window.scrollTo({top: 0, behavior: 'smooth'});
     };
-
-
-    const schema = Yup.object().shape({
-        question: Yup.array()
-            .required('Must have questions')
-
-    });
+    const FriendArrayErrors = errors =>
+        <div>{errors.question}</div>;
 
     return (
         <Content>
@@ -105,7 +99,6 @@ export const StandardQuiz = () => {
                     onSubmit={values => {
                         handleSubmit(values)
                     }}
-                    validationSchema={schema}
                 >
                     <Form className="form form--medium">
                         <SectionHeader type="important">POWTÓRZENIE DO MATURY Z MATEMATYKI</SectionHeader>
@@ -113,13 +106,12 @@ export const StandardQuiz = () => {
                             Test 20 losowych pytań z arkuszy maturalnych z poprzednich lat!
                         </SectionText>
                         <SectionText type="secondary">Czas rozwiązywania testu: {Timer(timerStatus)}</SectionText>
-                        <QuestionsList questions={questions}/>
+                        <QuestionsList questions={questions} />
+                        <FriendArrayErrors/>
                         <input type="submit" className="link link--primary link--long"
                                value="SPRAWDŹ WYNIK"/>
                     </Form>
                 </Formik>
-
-
             </Section>
         </Content>
     )

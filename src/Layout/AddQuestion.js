@@ -30,7 +30,6 @@ export const AddQuestion = () => (
                 }}
                 onSubmit={questionValues => {
                     let questionData = {data: [questionValues]};
-                    console.log(questionData);
 
                     API.post('/questions', questionData).then(response => {
                         console.log(response.data);

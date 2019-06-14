@@ -1,16 +1,23 @@
 import React from 'react';
 import {Question} from "../../components/Quiz/Question";
-import {ErrorMessage, FieldArray} from "formik";
-import * as Yup from 'yup';
+import {FieldArray} from "formik";
 
 export const QuestionsList = ({questions}) => {
-
     return (
         <div className="questions">
-            {questions.map((question, id) =>
-                <Question question={question} key={id} id={id} />
-            )
-            }
+            <FieldArray
+                name="question"
+                render={() => (
+                    <div>
+                        {questions.map((question, index) => (
+                                <div key={index}>
+                                    <Question question={question} key={index} id={index} />
+                                </div>
+                            ))
+                        }
+                    </div>
+                )}
+            />
         </div>
     );
 };

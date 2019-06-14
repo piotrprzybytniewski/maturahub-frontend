@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ErrorMessage, Field} from "formik";
+import {Field} from "formik";
 
 export const Answer = ({type = 'radio', name, value, content}) => {
-    return (
 
+    return (
         <div className="q__answer input-group">
-            <Field type={type} name={name} value={value} id={name + value} />
+            <Field type={type} name={name} value={value} id={name + value} required/>
             <label htmlFor={name + value}>
                 {`${value.toUpperCase()} . ${content}`}
             </label>
-
         </div>
     )
 };

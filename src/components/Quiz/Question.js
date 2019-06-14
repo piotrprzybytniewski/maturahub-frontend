@@ -1,9 +1,7 @@
 import React from 'react';
 import {Answer} from "./Answer/Answer";
-import {ErrorMessage} from "formik";
 
 export const Question = ({question, id}) => {
-
 
     return (
         <div className="q">
@@ -11,7 +9,6 @@ export const Question = ({question, id}) => {
                 <h4>{question.question}</h4>
             </div>
             <div className="q__content">
-
                 <Answer name={`question[${id}]`} value="a" content={question.answer.a} />
                 <Answer name={`question[${id}]`} value="b" content={question.answer.b} />
                 <Answer name={`question[${id}]`} value="c" content={question.answer.c} />
@@ -22,7 +19,6 @@ export const Question = ({question, id}) => {
                 <p>
                     {`${question.year} ${question.source} ${question.subject} poziom ${question.level} | ${question.section}`}
                 </p>
-
             </div>
         </div>
     )

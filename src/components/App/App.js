@@ -6,11 +6,13 @@ import {NotFound} from "../../Layout/NotFound";
 import {Footer} from "../Footer/Footer";
 import {AddQuestion} from "../../Layout/AddQuestion";
 import {StandardQuiz} from "../../Layout/Quiz/StandardQuiz";
+import ScrollToTop from "../Scroll/ScrollToTop";
 
 class App extends Component {
     render() {
         return (
             <Router>
+                <ScrollToTop>
                 <div className="wrapper">
                     <header>
                         <Navigation/>
@@ -23,6 +25,7 @@ class App extends Component {
                     </Switch>
                     <Footer/>
                 </div>
+                </ScrollToTop>
             </Router>
         )
     }

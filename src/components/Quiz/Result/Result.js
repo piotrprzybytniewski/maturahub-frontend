@@ -7,7 +7,7 @@ export const Result = ({result}) => {
     const [testResult, setResult] = useState({percentage: 0, points: 0 });
     const setQuizResult = (incorrectAmount, totalAmount) => {
         setResult({
-            percentage: ((totalAmount - incorrectAmount) / totalAmount) * 100,
+            percentage: (((totalAmount - incorrectAmount) / totalAmount) * 100).toFixed(0),
             points: `${totalAmount - incorrectAmount}/${totalAmount}`
         });
     };
